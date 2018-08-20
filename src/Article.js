@@ -5,7 +5,7 @@ export default class Article extends Component {
         super(props);
      
         this.state = {
-            isOpen: false
+            isOpen: true
         }
 
     }
@@ -16,7 +16,7 @@ export default class Article extends Component {
 
         return (
             <div>
-                <h3>{article.user}</h3>
+                <h3>{article.title}</h3>
                 <button onClick = {this.toggleOpen}>
                     {isOpen ? 'close' : 'open'}                
                 </button>
