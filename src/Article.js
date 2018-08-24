@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import CommentsList from './CommentsList';
-import { articles } from './fixtures';
+
 
 
 export default class Article extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
-     
+           
         this.state = {
             isOpen: true
         }
@@ -31,19 +30,17 @@ export default class Article extends Component {
 
     getBody() {
         if (!this.state.isOpen) return null;
-        console.log(this.props);
         const {article} = this.props;
-        const {comments} = this.props.article;
-       
         return (
-            <div>
-                <section>{article.text}}</section>
-                <CommentsList comments = {comments} />
-            </div>
+                <section>
+                    {article.text}}
+                    <CommentsList comments = {article.comments} />
+                </section>
         )
     }
 
-    toggleOpen = () => {
+    toggleOpen = (ev) => {
+        ev.preventDefault();
         this.setState({
             isOpen: !this.state.isOpen
         });
