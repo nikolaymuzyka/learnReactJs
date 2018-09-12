@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {findDOMNode} from 'react-dom';
 import CommentsList from './CommentsList';
 import toggleOpen from '../decorators/toggleOpen';
 
@@ -11,23 +12,26 @@ class Article extends Component {
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             text: PropTypes.string
-        })
+        }).isRequired,
+        isOpen: PropTypes.bool,
+        toggleOpen: PropTypes.func
     }
 
-    constructor(props) {
-        super(props);
-           
-        this.state = {
-            isOpen: true
-        }
+  
 
+    componentWillReceiveProps(nextProps) {
+        console.log('-----', 'updating', this.props.isOpen, nextProps.isOpen);
+    }
+
+    componentWillMount() {
+        console.log('------','mounting');
     }
     
     render() {
         const {article, isOpen, toggleOpen} = this.props;
 
         return (
-            <div>
+            <div ref = {this.setContainerRef}>
                 <h3>{article.title}</h3>
                 <button onClick = {toggleOpen}>
                     {isOpen ? 'close' : 'open'}                
@@ -37,21 +41,34 @@ class Article extends Component {
         );
     }
 
+    setContainerRef = ref => {
+        this.container = ref;
+        console.log('----', ref);
+    }
+
+    componentDidMount() {
+        console.log("------", 'mounted');
+    }
+
     getBody() {
         const {article, isOpen} = this.props;
         if (!isOpen) return null;
         return (
                 <section>
                     {article.text}}
-                    <CommentsList comments = {article.comments} />
+                    <CommentsList comments = {article.comments} ref = {this.setCommentsRef}/>
                 </section>
-        )
+        );
+    }
+
+    setCommentsRef = ref => {
+        console.log('-----', findDOMNode(ref));
     }
 
   
 }
 
-export default toggleOpen(Article);
+export default Article;
 
 
 
