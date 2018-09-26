@@ -7,7 +7,7 @@ function CommenstsList({comments =[], isOpen, toggleOpen}) {
 
     return (
         <div>
-            <button onClick = {toggleOpen}>{text}</button>
+            <button className="btn" onClick = {toggleOpen}>{text}</button>
             {getBody({comments, isOpen})}
         </div>
     )

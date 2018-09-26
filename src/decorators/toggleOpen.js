@@ -3,10 +3,10 @@ import React, {Component as ReactComponent} from 'react';
 export default (OriginalComponent) => class WrapedComponent extends ReactComponent {
     state = {
         isOpen: false
-    }
+    };
 
     render() {
-        return <OriginalComponent {...this.props} isOpen = {this.state.isOpen} toggleOpen = {this.toggleOpen}/>;
+        return <OriginalComponent {...this.props} isOpen = {this.state.isOpen} toggleOpen = {this.toggleOpen} ref = {this.getRef}/>;
     };
 
     toggleOpen = (ev) => {
@@ -14,5 +14,9 @@ export default (OriginalComponent) => class WrapedComponent extends ReactCompone
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    getRef = (ref) => {
+    //    console.log('---', ref)
     }
 }
