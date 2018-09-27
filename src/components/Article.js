@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {findDOMNode} from 'react-dom';
 import CommentsList from './CommentsList';
 import "../styles/style.css"
+import { CSSTransitionGroup } from 'react-transition-group'
+import "../styles/article.css"
 
 
 
@@ -35,7 +37,13 @@ class Article extends PureComponent {
                 <button className="btn" onClick = {toggleOpen}>
                     {isOpen ? 'close' : 'open'}                
                 </button>
-                {this.getBody()}
+                <CSSTransitionGroup
+                    transitionName="article"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}
+                >
+                    {this.getBody()}
+                </CSSTransitionGroup>
             </div>
         );
     }
