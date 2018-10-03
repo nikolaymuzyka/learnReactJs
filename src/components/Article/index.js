@@ -1,10 +1,8 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {findDOMNode} from 'react-dom';
-import CommentsList from './CommentsList';
-import "../styles/style.css"
+import CommentsList from '../CommentsList';
 import { CSSTransitionGroup } from 'react-transition-group'
-import "../styles/article.css"
 
 
 
@@ -39,8 +37,11 @@ class Article extends PureComponent {
                 </button>
                 <CSSTransitionGroup
                     transitionName="article"
+                    transitionAppear
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}
+                    transitionAppearTimeout={500}
+                    component = 'div'
                 >
                     {this.getBody()}
                 </CSSTransitionGroup>
