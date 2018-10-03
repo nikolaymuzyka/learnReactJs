@@ -17,14 +17,15 @@ export default class DateRange extends Component {
 
     render() {
         const {from, to} = this.state;
-        const selectRange = from && to && `${from.toDateString()} - ${to.toDateString}`;
+        const selectedRange = from && to && `${from.toDateString()} - ${to.toDateString()}`;
         return(
             <div className="date-range">
                 <DayPicker
                     ref="daypicker"
-                    selectdDays = { day => DateUtils.isDayInRange(day, { from, to }) }
+                    selectedDays = { day => DateUtils.isDayInRange(day, { from, to }) }
                     onDayClick={ this.handleDayClick }
                 />
+                {selectedRange}
             </div>
         );
     }
