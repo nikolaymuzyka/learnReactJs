@@ -43,6 +43,3 @@ export default connect((state) => ({
 
 // export default decorator(Counter);
 
-//-------------------------------
-// в реальном проекте
-
