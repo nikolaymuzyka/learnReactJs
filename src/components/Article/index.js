@@ -1,7 +1,7 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {findDOMNode} from 'react-dom';
-import CommentsList from '../CommentsList';
+import CommentList from '../CommentList';
 import { CSSTransitionGroup } from 'react-transition-group'
 import './styles.css';
 import {deleteArticle} from '../../AC';
@@ -69,7 +69,7 @@ class Article extends PureComponent {
         return (
                 <section>
                     {article.text}}
-                    <CommentsList comments = {article.comments} ref = {this.setCommentsRef}/>
+                    <CommentList comments = {article.comments} ref = {this.setCommentsRef}/>
                 </section>
         );
     }

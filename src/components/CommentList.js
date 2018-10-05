@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Comments from './Comments'
+import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen';
 import CommentForm from './CommentForm';
 
@@ -19,7 +19,7 @@ CommenstsList.propTypes = {
     comments: PropTypes.array,
     // from toggleOpen decorator
     isOpen: PropTypes.bool,
-    toggleOpen: PropTypes.gunc
+    toggleOpen: PropTypes.func
 }
 
 function getBody({comments, isOpen}) {
@@ -34,7 +34,7 @@ function getBody({comments, isOpen}) {
     return(
         <div>
             <ul>
-                {comments.map(comment => <li key={comment.id}><Comments comment={comment} /></li>)}    
+                {comments.map(id => <li key = {id}><Comment id = {id} /></li>)}    
             </ul>
             <CommentForm />
         </div>
