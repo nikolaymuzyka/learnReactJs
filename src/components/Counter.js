@@ -20,7 +20,6 @@ class Counter extends Component {
     }
 
     handleIncrement = () => {
-        console.log('----', 'incrementing')
         this.props.increment();
     }
 }

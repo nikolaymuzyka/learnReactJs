@@ -15,6 +15,13 @@ function CommenstsList({comments =[], isOpen, toggleOpen}) {
     )
 }
 
+CommenstsList.propTypes = {
+    comments: PropTypes.array,
+    // from toggleOpen decorator
+    isOpen: PropTypes.bool,
+    toggleOpen: PropTypes.gunc
+}
+
 function getBody({comments, isOpen}) {
     if (!isOpen) return null;
     if (!comments.length) return(
