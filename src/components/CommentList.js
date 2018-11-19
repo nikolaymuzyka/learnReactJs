@@ -4,13 +4,13 @@ import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen';
 import CommentForm from './CommentForm';
 
-function CommenstsList({comments =[], isOpen, toggleOpen}) {
+function CommenstsList({article, isOpen, toggleOpen}) {
     const text = isOpen ? 'hiden comment' : 'show comment';
 
     return (
         <div>
             <button className="btn" onClick = {toggleOpen}>{text}</button>
-            {getBody({comments, isOpen})}
+            {getBody({article, isOpen})}
         </div>
     )
 }
@@ -22,12 +22,12 @@ CommenstsList.propTypes = {
     toggleOpen: PropTypes.func
 }
 
-function getBody({comments, isOpen}) {
+function getBody({article: {comments = [], id}, isOpen}) {
     if (!isOpen) return null;
     if (!comments.length) return(
         <div>
             <p>No comments yet</p>
-            <CommentForm />
+            <CommentForm articleId = {id}/>
         </div>
     );
 
@@ -36,7 +36,7 @@ function getBody({comments, isOpen}) {
             <ul>
                 {comments.map(id => <li key = {id}><Comment id = {id} /></li>)}    
             </ul>
-            <CommentForm />
+            <CommentForm articleId = {id}/>
         </div>
     );
 }

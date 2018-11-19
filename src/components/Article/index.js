@@ -53,7 +53,7 @@ class Article extends PureComponent {
     }
 
     handleDelete = () => {
-        const {deleteArticle, article} = this.props;
+        const {deleteArticle, article} = this.props; //деструктуризация
         deleteArticle(article.id);
         console.log('----', 'deleting article');
     }
@@ -68,8 +68,10 @@ class Article extends PureComponent {
         if (!isOpen) return null;
         return (
                 <section>
-                    {article.text}}
-                    <CommentList comments = {article.comments} ref = {this.setCommentsRef}/>
+                    {article.text}
+                    <br/>
+                    <button onClick = {() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</button>
+                    <CommentList article = {article} ref = {this.setCommentsRef} key = {this.state.updateIndex}/>
                 </section>
         );
     }

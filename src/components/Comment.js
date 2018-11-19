@@ -29,4 +29,5 @@ const mapStateToProps = () => {
         comment: commentSelector(state, ownProps)
     });
 }
+
 export default connect(mapStateToProps)(Comment);
